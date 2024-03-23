@@ -13,13 +13,11 @@ The domain name system, or DNS, is a global system responsible for mapping human
 The following are the five major DNS record types:
 TYPE    | DESCRIPTION
 ------- | -------
-A record| The A record is the most important DNS record type. 
-            The "A" in A record stands for "address." An A record 
-            shows the IP address for a specific hostname or domain
-AAAA record   | hjhjjj 
-CNAME record  | hhh 
-Nameserver (NS) record    | hhjhjj 
-Mail exchange (MX) record | hjhghjg
+A record| The A record is the most important DNS record type.The "A" in A record stands for "address." An A record shows the IP address for a specific hostname or domain
+AAAA record| hjhjjj 
+CNAME record| hhh 
+Nameserver (NS) record| hhjhjj 
+Mail exchange (MX) record| hjhghjg
 
 ### Single point of failure
 
