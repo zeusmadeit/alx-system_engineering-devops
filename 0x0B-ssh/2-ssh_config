@@ -1,0 +1,11 @@
+Host 100.25.34.18
+  HostName 100.25.34.18
+  User ubuntu
+  IdentityFile ~/.ssh/school
+  PasswordAuthentication no
+
+Host *
+  HostName *
+  User root
+  IdentityFile ~/.ssh/school
+  PasswordAuthentication no
