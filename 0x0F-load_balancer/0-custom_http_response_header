@@ -12,7 +12,7 @@ sudo apt-get -y install nginx
 sudo ufw allow 'Nginx HTTP'
 
 # change permissions to allow us create files in this directory
-sudo chmod -R 755 /var/www
+sudo su
 
 #  create the index page
 echo "Hello World!" > /var/www/html/index.html
