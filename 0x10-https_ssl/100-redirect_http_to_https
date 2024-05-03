@@ -16,6 +16,7 @@ global
 	ssl-default-bind-ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384
 	ssl-default-bind-ciphersuites TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256
 	ssl-default-bind-options ssl-min-ver TLSv1.2 no-tls-tickets
+	tune.ssl.default-dh-param 2048
 
 defaults
 	log	global
@@ -40,7 +41,7 @@ frontend  zmi-frontend-http
     default_backend zmi-backend
 
 frontend zmi-frontend-https
-	bind *:443 ssl crt /etc/haproxy/certs/www.z-mi.tech.pem
+	bind *:443 ssl crt /etc/haproxy/certs/z-mi.tech.pem
 	http-request set-header X-Forwarded-Proto https
 	http-request redirect scheme https code 301 unless { ssl_fc }
 	default_backend zmi-backend
