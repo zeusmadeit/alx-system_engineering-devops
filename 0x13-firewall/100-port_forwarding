@@ -8,16 +8,6 @@
 #   ufw-before-forward
 #
 
-sudo apt-get -y update
-sudo apt-get -y install ufw
-sudo ufw disable
-sudo ufw default deny incoming
-sudo ufw default allow outgoing
-sudo systemctl stop ufw
-sudo ufw allow 22/tcp
-sudo ufw allow 443/tcp
-sudo ufw allow 80/tcp
-
 # Adding this line to forward all requests from port 8080 to port 80
 *nat
 :PREROUTING ACCEPT [0:0]
@@ -90,6 +80,3 @@ COMMIT
 
 # don't delete the 'COMMIT' line or these rules won't be processed
 COMMIT
-
-
-sudo ufw enable
