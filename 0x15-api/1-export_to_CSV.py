@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Accessing a REST API for todo lists of employees"""
+
 import requests
 from sys import argv
 
@@ -15,6 +16,8 @@ if __name__ == "__main__":
     response = requests.get(todoUrl)
     tasks = response.json()
 
-    with open(f"{employeeId}.csv", 'w') as file:
+    with open('{}.csv'.format(employeeId), 'w') as file:
         for task in tasks:
-            file.write(f'"{employeeId}","{username}","{task.get('completed')}","{task.get('title')}"\n')
+            file.write('"{}","{}","{}","{}"\n'
+                       .format(employeeId, username, task.get('completed'),
+                               task.get('title')))
