@@ -1,0 +1,47 @@
+# Default server configuration
+#
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        error_page 404 /404.html;
+        location = /404.html {
+                root /var/www/html;
+                internal;
+        }
+
+        root /var/www/html;
+
+        # Add index.php to the list if you are using PHP
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name _;
+        add_header X-Served-By $hostname;
+        rewrite ^/redirect_me https://www.blog.zmi.com permanent;
+
+        location /hbnb_static {
+                alias /data/web_static/current;
+                index index.html index.htm;
+        }
+
+        location / {
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                try_files $uri $uri/ =404;
+        }
+
+        location /airbnb-onepage/ {
+                include proxy_params;
+                proxy_pass http://0.0.0.0:5000;
+        }
+
+        # Serve /number_odd_or_even/ route on AirBnB_clone_v2
+        location ~ /airbnb-dynamic/number_odd_or_even/(\d+)$ {
+            proxy_pass http://127.0.0.1:5001/number_odd_or_even/$1;
+        }
+
+        # Serve API on AirBnB_clone_v3
+        location /api {
+            proxy_pass http://127.0.0.1:5002/api;
+        }
+}
